@@ -41,7 +41,7 @@
       "block-spacing": 2,
       "brace-style": 2,
       "callback-return": 2,
-      "camelcase": 2,
+      "camelcase": 1,
       "capitalized-comments": 2,
       "class-methods-use-this": 0,
       "comma-dangle": [
@@ -296,7 +296,7 @@
       "no-plusplus": 0,
       "no-process-env": 0,
       "no-process-exit": 1,
-      "no-proto": 2,
+      "no-proto": 1,
       "no-prototype-builtins": 0,
       "no-redeclare": 2,
       "no-regex-spaces": 2,
