@@ -14,6 +14,20 @@ lint:
   - npm install
   - npm run lint
 
+test:node:14:
+  stage: test
+  image: node:14
+  script:
+  - npm install
+  - npm run test
+
+test:node:12:
+  stage: test
+  image: node:12
+  script:
+  - npm install
+  - npm run test
+
 test:node:10:
   stage: test
   image: node:10
