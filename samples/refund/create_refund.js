@@ -1,15 +1,19 @@
-var YandexCheckout = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
-var paymentId = 'your_payment_id';
-var idempotenceKey = 'your_idempotence_key'; // it is not required
+const YandexCheckout = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
 
-YandexCheckout.createRefund(paymentId,
+const paymentId = 'your_payment_id';
+
+const idempotenceKey = 'your_idempotence_key'; // It is not required
+
+YandexCheckout.createRefund(
+  paymentId,
   {
-    'value': '2.00',
-    'currency': 'RUB'
-  }, idempotenceKey)
-  .then(function(result) {
+    value: '2.00',
+    currency: 'RUB',
+  }, idempotenceKey,
+)
+  .then(result => {
     console.log({ refund: result });
   })
-  .catch(function(err) {
+  .catch(err => {
     console.error(err);
   });

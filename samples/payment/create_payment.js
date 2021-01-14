@@ -7,11 +7,9 @@ YandexCheckout.createPayment({
     value: '2.00',
     currency: 'RUB',
   },
-  // eslint-disable-next-line camelcase
   payment_method_data: { type: 'bank_card' },
   confirmation: {
     type: 'redirect',
-    // eslint-disable-next-line camelcase
     return_url: 'https://www.merchant-website.com/return_url',
   },
 }, idempotenceKey)
