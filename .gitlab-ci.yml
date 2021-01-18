@@ -7,7 +7,6 @@ stages:
 - audit
 - release
 
-
 lint:
   stage: lint
   script:
@@ -31,27 +30,6 @@ test:node:12:
 test:node:10:
   stage: test
   image: node:10
-  script:
-  - npm install
-  - npm run test
-
-test:node:8:
-  stage: test
-  image: node:8
-  script:
-  - npm install
-  - npm run test
-
-test:node:6:
-  stage: test
-  image: node:6
-  script:
-  - npm install
-  - npm run test
-
-test:node:4:
-  stage: test
-  image: node:4
   script:
   - npm install
   - npm run test
