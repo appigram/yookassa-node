@@ -8,7 +8,7 @@ const responses = require('./successResponses');
 
 const errorResponse = require('./errorResponses');
 
-const YandexCheckout = require('../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
+const YooKassa = require('../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
 
 const idempotenceKey = 1;
 
@@ -39,7 +39,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createPayment').resolves(responses.responseForCreate);
+      stub = sinon.stub(YooKassa.__proto__, '_createPayment').resolves(responses.responseForCreate);
     });
 
     after(() => {
@@ -47,7 +47,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createPayment(paymentInfo, idempotenceKey);
+      test = YooKassa.createPayment(paymentInfo, idempotenceKey);
     });
 
     describe('Creating payment', () => {
@@ -70,7 +70,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_getPaymentInfo').resolves(responses.responseForGetInfo);
+      stub = sinon.stub(YooKassa.__proto__, '_getPaymentInfo').resolves(responses.responseForGetInfo);
     });
 
     after(() => {
@@ -78,7 +78,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.getPayment(responses.responseForCreate.id);
+      test = YooKassa.getPayment(responses.responseForCreate.id);
     });
 
     describe('Get info about payment by id', () => {
@@ -102,7 +102,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_capturePayment').resolves(responses.responseForConfirmPayment);
+      stub = sinon.stub(YooKassa.__proto__, '_capturePayment').resolves(responses.responseForConfirmPayment);
     });
 
     after(() => {
@@ -110,7 +110,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.capturePayment(
+      test = YooKassa.capturePayment(
         responses.responseForCreate.id,
         {
           value: '2.00',
@@ -141,7 +141,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_cancelPayment').resolves(responses.responseForCancelPayment);
+      stub = sinon.stub(YooKassa.__proto__, '_cancelPayment').resolves(responses.responseForCancelPayment);
     });
 
     after(() => {
@@ -149,7 +149,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.cancelPayment(responses.responseForCreate.id, idempotenceKey);
+      test = YooKassa.cancelPayment(responses.responseForCreate.id, idempotenceKey);
     });
 
     describe('Cancel payment', () => {
@@ -174,7 +174,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createRefund').resolves(responses.responseForRefundCreateAndGet);
+      stub = sinon.stub(YooKassa.__proto__, '_createRefund').resolves(responses.responseForRefundCreateAndGet);
     });
 
     after(() => {
@@ -182,7 +182,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createRefund(
+      test = YooKassa.createRefund(
         responses.responseForCreate.id,
         {
           value: '2.00',
@@ -212,7 +212,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_getRefundInfo').resolves(responses.responseForRefundCreateAndGet);
+      stub = sinon.stub(YooKassa.__proto__, '_getRefundInfo').resolves(responses.responseForRefundCreateAndGet);
     });
 
     after(() => {
@@ -220,7 +220,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.getRefund(responses.responseForRefundCreateAndGet.id, idempotenceKey);
+      test = YooKassa.getRefund(responses.responseForRefundCreateAndGet.id, idempotenceKey);
     });
 
     describe('Get info about refund', () => {
@@ -243,7 +243,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createPayment').resolves(errorResponse.authenticationFailed);
+      stub = sinon.stub(YooKassa.__proto__, '_createPayment').resolves(errorResponse.authenticationFailed);
     });
 
     after(() => {
@@ -251,7 +251,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createPayment(paymentInfo, idempotenceKey);
+      test = YooKassa.createPayment(paymentInfo, idempotenceKey);
     });
 
     describe('failed creating payment', () => {
@@ -276,7 +276,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_getPaymentInfo').resolves(errorResponse.paymentNotFound);
+      stub = sinon.stub(YooKassa.__proto__, '_getPaymentInfo').resolves(errorResponse.paymentNotFound);
     });
 
     after(() => {
@@ -284,7 +284,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.getPayment(responses.responseForRefundCreateAndGet.id);
+      test = YooKassa.getPayment(responses.responseForRefundCreateAndGet.id);
     });
 
     describe('Get info about payment by id', () => {
@@ -309,7 +309,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_getRefundInfo').resolves(errorResponse.refundNotFound);
+      stub = sinon.stub(YooKassa.__proto__, '_getRefundInfo').resolves(errorResponse.refundNotFound);
     });
 
     after(() => {
@@ -317,7 +317,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.getRefund(responses.responseForCreate.id);
+      test = YooKassa.getRefund(responses.responseForCreate.id);
     });
 
     describe('Get info about refund by id', () => {
@@ -342,7 +342,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createPayment').resolves(errorResponse.emptyIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_createPayment').resolves(errorResponse.emptyIdempotenceKey);
     });
 
     after(() => {
@@ -350,7 +350,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createPayment(paymentInfo);
+      test = YooKassa.createPayment(paymentInfo);
     });
 
     describe('failed creating payment without idempotence key', () => {
@@ -375,7 +375,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createRefund').resolves(errorResponse.emptyIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_createRefund').resolves(errorResponse.emptyIdempotenceKey);
     });
 
     after(() => {
@@ -383,7 +383,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createRefund(paymentInfo);
+      test = YooKassa.createRefund(paymentInfo);
     });
 
     describe('failed creating refund without idempotence key', () => {
@@ -408,7 +408,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_capturePayment').resolves(errorResponse.emptyIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_capturePayment').resolves(errorResponse.emptyIdempotenceKey);
     });
 
     after(() => {
@@ -416,7 +416,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.capturePayment(paymentInfo);
+      test = YooKassa.capturePayment(paymentInfo);
     });
 
     describe('failed capture payment', () => {
@@ -441,7 +441,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_cancelPayment').resolves(errorResponse.emptyIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_cancelPayment').resolves(errorResponse.emptyIdempotenceKey);
     });
 
     after(() => {
@@ -449,7 +449,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.cancelPayment(paymentInfo);
+      test = YooKassa.cancelPayment(paymentInfo);
     });
 
     describe('failed cancel payment', () => {
@@ -474,7 +474,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createPayment').resolves(errorResponse.duplicateIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_createPayment').resolves(errorResponse.duplicateIdempotenceKey);
     });
 
     after(() => {
@@ -482,7 +482,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createPayment(paymentInfo);
+      test = YooKassa.createPayment(paymentInfo);
     });
 
     describe('failed creating payment with duplicate of idempotence key', () => {
@@ -507,7 +507,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createRefund').resolves(errorResponse.duplicateIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_createRefund').resolves(errorResponse.duplicateIdempotenceKey);
     });
 
     after(() => {
@@ -515,7 +515,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createRefund(paymentInfo);
+      test = YooKassa.createRefund(paymentInfo);
     });
 
     describe('failed creating payment with duplicate of idempotence key', () => {
@@ -540,7 +540,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_capturePayment').resolves(errorResponse.duplicateIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_capturePayment').resolves(errorResponse.duplicateIdempotenceKey);
     });
 
     after(() => {
@@ -548,7 +548,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.capturePayment(paymentInfo);
+      test = YooKassa.capturePayment(paymentInfo);
     });
 
     describe('failed capture payment', () => {
@@ -573,7 +573,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_cancelPayment').resolves(errorResponse.duplicateIdempotenceKey);
+      stub = sinon.stub(YooKassa.__proto__, '_cancelPayment').resolves(errorResponse.duplicateIdempotenceKey);
     });
 
     after(() => {
@@ -581,7 +581,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.cancelPayment(paymentInfo);
+      test = YooKassa.cancelPayment(paymentInfo);
     });
 
     describe('failed cancel payment', () => {
@@ -606,7 +606,7 @@ describe('Test all functionality', () => {
     let stub;
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_createPayment').resolves(errorResponse.missingConfirmType);
+      stub = sinon.stub(YooKassa.__proto__, '_createPayment').resolves(errorResponse.missingConfirmType);
     });
 
     after(() => {
@@ -614,7 +614,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = YandexCheckout.createPayment(infoWithoutConfirm, idempotenceKey);
+      test = YooKassa.createPayment(infoWithoutConfirm, idempotenceKey);
     });
 
     describe('failed creating payment', () => {
@@ -638,10 +638,10 @@ describe('Test all functionality', () => {
 
     let stub;
 
-    const failYandexCheckout = require('../lib/index')('your_shop_id', 'your_secret_key');
+    const failYooKassa = require('../lib/index')('your_shop_id', 'your_secret_key');
 
     before(() => {
-      stub = sinon.stub(YandexCheckout.__proto__, '_getPaymentInfo').resolves(errorResponse.authenticationFailed);
+      stub = sinon.stub(YooKassa.__proto__, '_getPaymentInfo').resolves(errorResponse.authenticationFailed);
     });
 
     after(() => {
@@ -649,7 +649,7 @@ describe('Test all functionality', () => {
     });
 
     before(() => {
-      test = failYandexCheckout.getPayment(responses.responseForGetInfo.id);
+      test = failYooKassa.getPayment(responses.responseForGetInfo.id);
     });
 
     describe('failed creating payment', () => {

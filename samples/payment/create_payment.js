@@ -1,8 +1,8 @@
-const YandexCheckout = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
+const YooKassa = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
 
 const idempotenceKey = 'your_idempotence_key'; // It is not required
 
-YandexCheckout.createPayment({
+YooKassa.createPayment({
   amount: {
     value: '2.00',
     currency: 'RUB',

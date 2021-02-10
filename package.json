@@ -1,13 +1,15 @@
 {
-  "name": "yandex-checkout",
-  "version": "1.0.13",
-  "description": "Yandex.Checkout API v3",
+  "name": "yookassa-node",
+  "version": "1.1.0",
+  "description": "YooKassa API v3",
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint ./",
     "test": "mocha ./tests/basic.js"
   },
   "keywords": [
+    "YooKassa",
+    "YooMoney",
     "Yandex.Checkout",
     "Yandex.Kassa",
     "payment processing",
@@ -16,30 +18,30 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lodosstm/yandex-checkout-node"
+    "url": "https://github.com/appigram/yookassa-node"
   },
   "engines": {
     "node": ">=4"
   },
-  "author": "Lodoss Team <info@lodoss.team> (http://www.lodossteam.com/)",
+  "author": "Evgeny Sysmanov <appigram@gmail.com> (https://ryfma.com/)",
   "license": "MIT",
   "readme": "README.md",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.17.0",
-    "eslint-plugin-chai-friendly": "^0.4.1",
-    "mocha": "^4.1.0",
-    "sinon": "^4.5.0",
-    "supertest": "^3.4.2"
+    "chai": "^4.3.0",
+    "eslint": "^7.19.0",
+    "eslint-plugin-chai-friendly": "^0.6.0",
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.4",
+    "supertest": "^6.1.3"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.2",
     "eslint-plugin-import": "^2.22.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "request-promise-core": "^1.1.2",
+    "request-promise-core": "^1.1.4",
     "uuid": "^8.3.2"
   }
 }

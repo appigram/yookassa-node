@@ -1,10 +1,10 @@
-const YandexCheckout = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
+const YooKassa = require('../../lib/index')({ shopId: 'your_shop_id', secretKey: 'your_secret_key' });
 
 const paymentId = 'your_payment_id';
 
 const idempotenceKey = 'your_idempotence_key'; // It is not required
 
-YandexCheckout.cancelPayment(paymentId, idempotenceKey)
+YooKassa.cancelPayment(paymentId, idempotenceKey)
   .then(result => {
     console.log({ payment: result });
   })
