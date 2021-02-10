@@ -1,5 +1,5 @@
 {
-  "name": "yookassa-node",
+  "name": "@appigram/yookassa-node",
   "version": "1.1.0",
   "description": "YooKassa API v3",
   "main": "./lib/index.js",
