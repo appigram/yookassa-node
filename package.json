@@ -1,6 +1,6 @@
 {
 	"name": "@appigram/yookassa-node",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"description": "YooKassa API v3",
 	"main": "./lib/index.js",
 	"scripts": {
@@ -27,15 +27,15 @@
 	"license": "MIT",
 	"readme": "README.md",
 	"devDependencies": {
-		"@babel/core": "^7.18.2",
-		"@babel/eslint-parser": "^7.18.2",
+		"@babel/core": "^7.19.0",
+		"@babel/eslint-parser": "^7.18.9",
 		"chai": "^4.3.6",
-		"eslint": "^8.17.0",
+		"eslint": "^8.23.0",
 		"eslint-plugin-chai-friendly": "^0.7.2",
 		"eslint-plugin-import": "^2.26.0",
 		"mocha": "^10.0.0",
 		"sinon": "^14.0.0",
-		"supertest": "^6.2.3"
+		"supertest": "^6.2.4"
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
@@ -43,6 +43,6 @@
 		"request": "^2.88.2",
 		"request-promise": "^4.2.6",
 		"request-promise-core": "^1.1.4",
-		"uuid": "^8.3.2"
+		"uuid": "^9.0.0"
 	}
 }
